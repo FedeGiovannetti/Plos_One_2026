@@ -367,16 +367,20 @@ Figure1 = base_completos%>%
                 position=position_dodge(width = 0.2),width=0,lwd=1.75)+
   labs(y="Score",x="Time") +
   theme_bw(base_size = 15) +
-  theme(legend.position=c(0.84,0.15)
+  theme(legend.position=c(0.7,0.15)
         # legend.text = element_text(size = 10)
         )
 
 
 Figure1
+# 
+# Figure1%>%
+#   ggexport(filename = "Figures/png/Figure1.png", width = 5.6, height = 8.6,res = 600,)
 
-Figure1%>%
-  ggexport(filename = "Figures/png/Figure1.png", width = 720, height = 480)
-
+Figure1 %>% 
+  ggsave(filename = "Figures/png/Figure1.png", device = "png", width = 5.6, height = 5.6, units = "in", dpi = 600)
+Figure1 %>% 
+  ggsave(filename = "Figures/tif/Figure1.tif", width = 5.6, height = 5.6, units = "in", dpi = 300)
 
 ```
 
@@ -845,7 +849,7 @@ for (i in 1:length(significant_questions)) {
         geom_errorbar(aes(ymin=Porcentaje-SE, ymax=Porcentaje+SE),
                       position=position_dodge(width = 0.2),width=0,lwd=1.25)+
         annotate("text", label = paste(strwrap(significant_questions[i],
-                                               width = 45),
+                                               width = 40),
                                        collapse = "\n"),
                  x = 0.6, y = 15, size = 4, colour = "black", hjust = 0)+
         labs(y="Percentage",x="Time") +
@@ -863,8 +867,14 @@ Figure2 = ggarrange(plotlist = plot_list, common.legend = T,
 
 Figure2
 
-Figure2%>%
-  ggexport(filename = "Figures/png/Figure2.png", width = 720, height = 720)
+# Figure2%>%
+#   ggexport(filename = "Figures/png/Figure2.png", width = 720, height = 720)
+
+Figure2 %>% 
+  ggsave(filename = "Figures/png/Figure2.png", width = 5.6, height = 5.6, units = "in", dpi = 600)
+
+Figure2 %>% 
+  ggsave(filename = "Figures/tif/Figure2.tif", width = 8.6, height = 8.5, units = "in", dpi = 300, bg = "white")
 
 ```
 
